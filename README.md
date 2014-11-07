@@ -37,7 +37,7 @@ Biu
 ### 用户注册 登陆 添加好友等
 建库建表 ORM
 
-**ps** 我们采用一个服务对应一个url
+ps: 我们采用一个服务对应一个url
 
 ```python
 urlpatterns = patterns(",
@@ -54,7 +54,7 @@ urlpatterns = patterns(",
 
 ### 聊天
 采用JPush提供的推送服务实现聊天，轻松简便
-[](https://raw.github.com/sysu2012zzp/Biu/master/pushtask_architecture.png)
+![](https://raw.github.com/sysu2012zzp/Biu/master/pushtask_architecture.png)
 
 ### 软件锁
 I don't know what is this
