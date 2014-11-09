@@ -10,6 +10,7 @@ Biu
 -------
 
 *先完成需要两端通信的任务*
+
 1. 找适合的云服务器(不一定是下面介绍的，能用就行)，架设好平台,创建所有空功能。根据下面的通信细节，所有功能不实现细节，直接返回基本数据。
 
 2. 优先实现注册功能, 登陆功能
@@ -70,7 +71,7 @@ ps: 为了方便起见，我们采用一个服务对应一个url
 urlpatterns = patterns(",
     (r'^register$', 'biu.user.register'),
     (r'^login$', 'biu.user.login'),
-    (r'^logout$, 'biu.user.logout'),
+    (r'^logout$', 'biu.user.logout'),
     (r'^heartbeat$', 'biu.user.heartbeat'),
     # and so on
 )
