@@ -20,22 +20,22 @@ Biu
 项目依赖
 -------
 
-###[JPush极光推送](https://www.jpush.cn)
+###1.[JPush极光推送](https://www.jpush.cn)
 通过推送实现好友添加、聊天等功能
 
 * [服务端python SDK下载](https://github.com/jpush/jpush-api-python-client)
 * [客户端Android SDK集成指南](http://doc.jpush.cn/pages/viewpage.action?pageId=557214)
 
-###服务器(请服务端众记得先搞定这个)
+###2.服务器(请服务端众记得先搞定这个)
 个人比较熟悉[京东云擎](http://jae.jd.com),免费可用
 
 另一个免费的是[新浪云SAE](http://sae.sina.com/cn)，也是免费不过要实名申请
 
-###Python [Django框架](https://www.djangoproject.com)
+###3.Python [Django框架](https://www.djangoproject.com)
 
-###[安卓SDK](http://developer.android.com)
+###4.[安卓SDK](http://developer.android.com)
 
-###[百度定位SDK](http://developer.baidu.com/map/index.php?title=android-locsdk)
+###5.[百度定位SDK](http://developer.baidu.com/map/index.php?title=android-locsdk)
 
 
 主要功能及其技术实现
@@ -77,7 +77,7 @@ response: code(0 => ok, 1 => username not exist, 2 => password not correct)
 
 request: username
 
-response: code(0 => ok, 1 => faid);
+response: code(0 => ok, 1 => fail)
 
 
 ### 好友寻找
@@ -102,9 +102,9 @@ response: a json list with following format
 {
   "count": 3,
   "users": [
-    {"nickname": "Judy", etc attributes},
-    {"nickname": "Gay", etc attributes},
-    {"nickname": "Fuck", etc attributes}
+    {"nickname": "Judy", "etc attributes"},
+    {"nickname": "Gay", "etc attributes"},
+    {"nickname": "Fuck", "etc attributes"}
   ]
 }
 ```
