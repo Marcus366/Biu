@@ -94,7 +94,7 @@ response: code(0 => ok, 1 => username not exist, 2 => password not correct)
 
 request: username
 
-response: code(0 => ok, 1 => fail)
+response: code(0 => ok, always succeed)
 
 
 ### 好友寻找
@@ -138,4 +138,4 @@ Why JPush: 极光推送能够保存离线消息，能够做到离线聊天。
 I don't know what is this
 
 ### 安全聊天
-
+此功能只需在客户端实现，在聊天界面会有遮罩层阻挡
