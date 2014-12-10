@@ -117,6 +117,7 @@ response: a json list with following format
 
 ```json
 {
+  "cod"  : 0, # 0 => ok, 1 => username not exist
   "count": 3,
   "users": [
     {"nickname": "Judy", "etc attributes"},
@@ -133,6 +134,19 @@ response: a json list with following format
 图片解析：当用户A对用户B发出一句话时，用户A向服务器发出请求，服务器向极光推送发出推送请求，由极光负责把信息推送至Ｂ
 
 Why JPush: 极光推送能够保存离线消息，能够做到离线聊天。
+
+* add:
+
+request: username, target
+
+response: code(0 => ok, 1 => username/target not exist, 2 => not login)
+
+* send:
+
+request: username, target, msg
+
+response: code(0 => ok, 1 => username/target not exist, 2 => not login)
+
 
 ### 软件锁
 I don't know what is this
