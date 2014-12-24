@@ -1,4 +1,4 @@
-package com.ajaybe.biu;
+package org.ajaybe.biu;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ajaybe.biu.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -51,6 +52,12 @@ public class LoginActivity extends Activity {
     }
     
     public void Login(View view) {
+    	
+    	/*
+    	Intent intent = new Intent(this, BiuActivity.class);
+    	this.startActivity(intent);
+		*/
+
     	EditText edittext_username = (EditText) findViewById(R.id.username);
     	EditText edittext_password = (EditText) findViewById(R.id.password);
     	String username = edittext_username.getText().toString();
