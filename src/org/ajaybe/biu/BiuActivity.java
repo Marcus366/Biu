@@ -2,8 +2,6 @@ package org.ajaybe.biu;
 
 import java.util.List;
 
-import com.ajaybe.biu.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
@@ -13,6 +11,8 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+
+import com.ajaybe.biu.R;
 
 public class BiuActivity extends Activity implements SensorEventListener {
 	private SensorManager mSensorManager;
@@ -34,7 +34,7 @@ public class BiuActivity extends Activity implements SensorEventListener {
         	Log.e("Sensor", sensor.getName());
         }
         mOrientation = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
-        mMagnetic = mSensorManager.getDefaultSensor(Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR);
+        //mMagnetic = mSensorManager.getDefaultSensor(Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR);
         
         mText.setText("what");
 	}
