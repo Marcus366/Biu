@@ -18,7 +18,7 @@ package com.loopj.android.http;
 
 import java.io.UnsupportedEncodingException;
 
-import com.ajaybe.biu.BuildConfig;
+import org.ajaybe.biu.BuildConfig;
 
 /**
  * Utilities for encoding and decoding the Base64 representation of binary data.  See RFCs <a

@@ -1,6 +1,9 @@
 package org.ajaybe.biu;
 
+import java.util.Set;
+
 import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -9,8 +12,12 @@ import com.baidu.location.LocationClientOption.LocationMode;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 public class BiuApplication extends Application {
+	
+	static private String TAG = "BiuApplication";
+	
 	static private LocationClient sLocationClient;
 	
 	static public void initThirdParty(Context ctx) {
@@ -30,6 +37,18 @@ public class BiuApplication extends Application {
 			/* initialize JPush */
 			JPushInterface.setDebugMode(true);
 			JPushInterface.init(ctx);
+			JPushInterface.setAlias(ctx, "pjb", new TagAliasCallback() {
+
+				@Override
+				public void gotResult(int statusCode, String alias, Set<String> tags) {
+					if (statusCode == 0) {
+						Log.e(TAG, "setAlias OK: " + alias);
+					} else {
+						Log.e(TAG, "setAlias Fail");
+					}
+				}
+				
+			});
 		}
 	}
 

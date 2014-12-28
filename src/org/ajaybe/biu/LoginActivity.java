@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.ajaybe.biu.R;
+import org.ajaybe.biu.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -82,7 +82,7 @@ public class LoginActivity extends Activity {
 							if (key.equals("code")) {
 								int response = jsonObject.getInt(key);
 								if (response == 0) {
-									Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+									Intent intent = new Intent(LoginActivity.this, ChatActivity.class);
 									LoginActivity.this.startActivity(intent);
 									LoginActivity.this.finish();
 								} else if (response == 1) {

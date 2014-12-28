@@ -2,7 +2,7 @@ package org.ajaybe.biu;
 
 import java.util.List;
 
-import com.ajaybe.biu.R;
+import org.ajaybe.biu.R;
 
 import android.app.Activity;
 import android.content.Context;

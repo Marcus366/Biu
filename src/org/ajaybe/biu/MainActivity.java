@@ -1,6 +1,7 @@
 package org.ajaybe.biu;
 
-import com.ajaybe.biu.R;
+
+import org.ajaybe.biu.R;
 
 import android.app.Activity;
 import android.os.Bundle;
