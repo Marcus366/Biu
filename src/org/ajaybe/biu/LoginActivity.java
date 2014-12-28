@@ -53,11 +53,10 @@ public class LoginActivity extends Activity {
     
     public void Login(View view) {
     	
-    	/*
-    	Intent intent = new Intent(this, BiuActivity.class);
+    	Intent intent = new Intent(this, MainActivity.class);
     	this.startActivity(intent);
-		*/
-
+		
+		/*
     	EditText edittext_username = (EditText) findViewById(R.id.username);
     	EditText edittext_password = (EditText) findViewById(R.id.password);
     	String username = edittext_username.getText().toString();
@@ -108,5 +107,6 @@ public class LoginActivity extends Activity {
 			}
     		
     	});
+    	*/
     }
 }
