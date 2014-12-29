@@ -9,15 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
-import com.ajaybe.biu.R;
 
 public class FriendFragment extends ListFragment {
 	
@@ -43,13 +39,13 @@ public class FriendFragment extends ListFragment {
 	private List<Map<String, Object>> getData() {
 		List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("portrait", R.drawable.tab_fri);
-		map.put("user_name", "fuck");
+		map.put("portrait", R.drawable.pt_boy);
+		map.put("user_name", "ZengZhanPeng");
 		data.add(map);
 		
 		map = new HashMap<String, Object>();
-		map.put("portrait", R.drawable.tab_biu);
-		map.put("user_name", "cao");
+		map.put("portrait", R.drawable.pt_girl);
+		map.put("user_name", "LiYuZu");
 		data.add(map);
 		return data;
 	}	
@@ -58,7 +54,7 @@ public class FriendFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_friend, container, false);
-        FriendFragment.this.getActivity().getActionBar().setTitle("Your Friends");
+        FriendFragment.this.getActivity().getActionBar().setTitle("FRIENDS");
         return v;
     }	
 

@@ -2,11 +2,8 @@ package org.ajaybe.biu;
 
 import java.util.List;
 
-<<<<<<< HEAD
 import org.ajaybe.biu.R;
 
-=======
->>>>>>> 4a60f857b4517e87167594028327f68afd67f085
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
@@ -17,7 +14,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.ajaybe.biu.R;
 
 public class BiuActivity extends Activity implements SensorEventListener {
 	private SensorManager mSensorManager;

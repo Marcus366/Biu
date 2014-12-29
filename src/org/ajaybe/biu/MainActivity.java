@@ -1,22 +1,13 @@
 package org.ajaybe.biu;
 
-<<<<<<< HEAD
-
-import org.ajaybe.biu.R;
-
-import android.app.Activity;
-=======
->>>>>>> 4a60f857b4517e87167594028327f68afd67f085
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
 
-import com.ajaybe.biu.R;
 
 public class MainActivity extends FragmentActivity {
 	
@@ -25,7 +16,7 @@ public class MainActivity extends FragmentActivity {
 	private FragmentTabHost mTabHost;
 	private String texts[] = {"ForumFragment", "FriendFragment", "BiuFragment", "SettingFragment"};
 	//private Class fragments[] = {ForumFragment.class, FriendFragment.class, BiuFragment.class, SettingFragment.class};
-	private Class fragments[] = {BiuFragment.class, FriendFragment.class, BiuFragment.class, BiuFragment.class};
+	private Class fragments[] = {ForumFragment.class, FriendFragment.class, BiuFragment.class, SettingFragment.class};
 	private int drawables[] = {R.drawable.tab_forum, R.drawable.tab_fri, R.drawable.tab_biu, R.drawable.tab_set};
 
 	@Override

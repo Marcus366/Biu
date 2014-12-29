@@ -53,10 +53,11 @@ public class LoginActivity extends Activity {
     
     public void Login(View view) {
     	
+    	/*
     	Intent intent = new Intent(this, MainActivity.class);
     	this.startActivity(intent);
+		*/
 		
-		/*
     	EditText edittext_username = (EditText) findViewById(R.id.username);
     	EditText edittext_password = (EditText) findViewById(R.id.password);
     	String username = edittext_username.getText().toString();
@@ -81,7 +82,7 @@ public class LoginActivity extends Activity {
 							if (key.equals("code")) {
 								int response = jsonObject.getInt(key);
 								if (response == 0) {
-									Intent intent = new Intent(LoginActivity.this, ChatActivity.class);
+									Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 									LoginActivity.this.startActivity(intent);
 									LoginActivity.this.finish();
 								} else if (response == 1) {
@@ -107,6 +108,6 @@ public class LoginActivity extends Activity {
 			}
     		
     	});
-    	*/
+    	
     }
 }
