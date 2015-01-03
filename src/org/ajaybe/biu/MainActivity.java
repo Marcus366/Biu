@@ -24,6 +24,8 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		init();
+		
+		BiuApplication.initThirdParty(getApplicationContext());
 	}
 	
 	private void init() {

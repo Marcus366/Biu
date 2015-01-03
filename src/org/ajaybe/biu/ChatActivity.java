@@ -46,7 +46,6 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 		initData();// 初始化数据
 		mListView.setSelection(mAdapter.getCount() - 1);
 
-		BiuApplication.initThirdParty(getApplicationContext());
 	}
 
 	@Override
@@ -196,7 +195,7 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 			mListView.setSelection(mListView.getCount() - 1);// 发送一条消息时，ListView显示选择最后一项
 			
 			RequestParams params = new RequestParams();
-	    	params.put("username", "pjb");
+	    	params.put("username", BiuApplication.getUsername());
 	    	params.put("target", "zzq");
 	    	params.put("msg", contString);
 			
