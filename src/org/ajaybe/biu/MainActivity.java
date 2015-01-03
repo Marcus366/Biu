@@ -1,22 +1,13 @@
 package org.ajaybe.biu;
 
-<<<<<<< HEAD
-
-import org.ajaybe.biu.R;
-
-import android.app.Activity;
-=======
->>>>>>> 4a60f857b4517e87167594028327f68afd67f085
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
 
-import com.ajaybe.biu.R;
 
 public class MainActivity extends FragmentActivity {
 	
@@ -33,6 +24,8 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		init();
+		
+		BiuApplication.initThirdParty(getApplicationContext());
 	}
 	
 	private void init() {

@@ -7,6 +7,10 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import org.ajaybe.biu.R;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 
 public class LoginActivity extends Activity {
@@ -52,15 +51,16 @@ public class LoginActivity extends Activity {
     }
     
     public void Login(View view) {
-    	
-    	Intent intent = new Intent(this, MainActivity.class);
-    	this.startActivity(intent);
+//    	Intent intent = new Intent(this, MainActivity.class);
+//    	this.startActivity(intent);
 		
-		/*
+		
     	EditText edittext_username = (EditText) findViewById(R.id.username);
     	EditText edittext_password = (EditText) findViewById(R.id.password);
-    	String username = edittext_username.getText().toString();
-    	String password = edittext_password.getText().toString();
+//    	final String username = edittext_username.getText().toString();
+//    	final String password = edittext_password.getText().toString();
+    	final String username = "zzq";
+    	final String password = "123456";
     	RequestParams params = new RequestParams();
     	params.put("username", username);
     	params.put("password", password);
@@ -81,7 +81,8 @@ public class LoginActivity extends Activity {
 							if (key.equals("code")) {
 								int response = jsonObject.getInt(key);
 								if (response == 0) {
-									Intent intent = new Intent(LoginActivity.this, ChatActivity.class);
+									BiuApplication.setUsername(username);
+									Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 									LoginActivity.this.startActivity(intent);
 									LoginActivity.this.finish();
 								} else if (response == 1) {
@@ -107,6 +108,6 @@ public class LoginActivity extends Activity {
 			}
     		
     	});
-    	*/
+    	
     }
 }
