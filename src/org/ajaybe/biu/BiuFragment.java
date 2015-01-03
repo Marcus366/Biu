@@ -28,7 +28,7 @@ import com.loopj.android.http.RequestParams;
 public class BiuFragment extends Fragment implements SensorEventListener, OnClickListener {
 	private SensorManager mSensorManager;
 	private Sensor mSensor;
-	private float direction;
+	private float mDirection;
 	
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,18 +36,30 @@ public class BiuFragment extends Fragment implements SensorEventListener, OnClic
 		BiuFragment.this.getActivity().getActionBar().setTitle("BIU!");
 		
 		
-		mSensorManager = (SensorManager)getActivity().getSystemService(Context.SENSOR_SERVICE);		
+		mSensorManager = (SensorManager)getActivity().getSystemService(Context.SENSOR_SERVICE);	
 		View view = inflater.inflate(R.layout.fragment_biu, null);
 		
 		mSensor = (Sensor)mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
 		
 		return view;
 	}
+	
+	@Override
+	public void onResume() {
+		mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+		super.onResume();
+	}
+	
+	@Override
+	public void onPause() {
+		mSensorManager.unregisterListener(this);
+		super.onPause();
+	}
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		direction = event.values[2];
-		Log.e("BiuFragment", "direction changed: " + direction);
+		mDirection = event.values[0];
+		Log.e("BiuFragment", "direction changed: " + mDirection);
 	}
 
 	@Override
@@ -62,7 +74,7 @@ public class BiuFragment extends Fragment implements SensorEventListener, OnClic
 		RequestParams params = new RequestParams();
 		
 		params.put("username", BiuApplication.getUsername());
-		params.put("direction", direction);
+		params.put("direction", mDirection);
 		client.post("http://106.187.100.252/search", params, new AsyncHttpResponseHandler() {
 
 			@Override

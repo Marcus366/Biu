@@ -40,7 +40,7 @@ public class FriendFragment extends ListFragment {
 		List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("portrait", R.drawable.pt_boy);
-		map.put("user_name", "ZengZhanPeng");
+		map.put("user_name", "pjb");
 		data.add(map);
 		
 		map = new HashMap<String, Object>();
@@ -72,10 +72,11 @@ public class FriendFragment extends ListFragment {
         System.out.println(position);  
         
         String str = view.get("user_name").toString();
-        if (str == "fuck") {
-        	Intent intent = new Intent(FriendFragment.this.getActivity(), LoginActivity.class);
+//        if (str == "fuck") {
+        	Intent intent = new Intent(FriendFragment.this.getActivity(), ChatActivity.class);
+        	intent.putExtra("name", view.get("user_name").toString());
         	FriendFragment.this.getActivity().startActivity(intent);
-        }
+//        }
           
           
     }  

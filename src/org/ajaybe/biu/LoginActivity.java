@@ -59,10 +59,8 @@ public class LoginActivity extends Activity {
 		
     	EditText edittext_username = (EditText) findViewById(R.id.username);
     	EditText edittext_password = (EditText) findViewById(R.id.password);
-//    	final String username = edittext_username.getText().toString();
-//    	final String password = edittext_password.getText().toString();
-    	final String username = "zzq";
-    	final String password = "123456";
+    	final String username = edittext_username.getText().toString();
+    	final String password = edittext_password.getText().toString();
     	RequestParams params = new RequestParams();
     	params.put("username", username);
     	params.put("password", password);

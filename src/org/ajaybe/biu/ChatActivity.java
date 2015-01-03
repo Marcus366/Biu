@@ -31,6 +31,7 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 	private Button mBtnSend;// 发送btn
 	private Button mBtnBack;// 返回btn
 	private EditText mEditTextContent;
+	private String mUsername;
 	private ListView mListView;	
 	private ChatAdapter mAdapter;// 消息视图的Adapter
 	private List<ChatEntity> mDataArrays = new ArrayList<ChatEntity>();// 消息对象数组
@@ -39,6 +40,8 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chat);
 
+		mUsername = getIntent().getStringExtra("user");
+		
 		initView();// 初始化view
 
 		initData();// 初始化数据
@@ -145,7 +148,7 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 			
 			RequestParams params = new RequestParams();
 	    	params.put("username", BiuApplication.getUsername());
-	    	params.put("target", "zzq");
+	    	params.put("target", targetname);
 	    	params.put("msg", contString);
 			
 			AsyncHttpClient client = new AsyncHttpClient();
@@ -156,7 +159,19 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 						byte[] responseBody) {
 					Log.e("LOG", "onSuccess(int, Header[], JSONObject) callback was received");
 					if (statusCode == 200) {
-						
+						try {
+							Log.e("ChatActivity", new String(responseBody, "gb2312"));
+							JSONObject jsonObject = new JSONObject(new String(responseBody, "gb2312"));
+							Iterator<String> jsonIter = jsonObject.keys();
+							while (jsonIter.hasNext()) {
+								String key = jsonIter.next();
+								
+							}
+						} catch (JSONException e) {
+							
+						} catch (UnsupportedEncodingException e) {
+							
+						}
 					}
 				}
 
