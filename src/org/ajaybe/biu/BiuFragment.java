@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.ajaybe.biu.R;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -30,10 +30,10 @@ public class BiuFragment extends Fragment implements SensorEventListener, OnClic
 	private Sensor mSensor;
 	private float direction;
 	
+
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
-		
-		BiuFragment.this.getActivity().getActionBar().setTitle("Biu!");
+		BiuFragment.this.getActivity().getActionBar().setTitle("BIU!");
 		
 		
 		mSensorManager = (SensorManager)getActivity().getSystemService(Context.SENSOR_SERVICE);		

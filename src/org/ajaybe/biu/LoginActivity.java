@@ -51,9 +51,11 @@ public class LoginActivity extends Activity {
     }
     
     public void Login(View view) {
-//    	Intent intent = new Intent(this, MainActivity.class);
-//    	this.startActivity(intent);
-		
+    	
+    	/*
+    	Intent intent = new Intent(this, MainActivity.class);
+    	this.startActivity(intent);
+		*/
 		
     	EditText edittext_username = (EditText) findViewById(R.id.username);
     	EditText edittext_password = (EditText) findViewById(R.id.password);
@@ -82,6 +84,7 @@ public class LoginActivity extends Activity {
 								int response = jsonObject.getInt(key);
 								if (response == 0) {
 									BiuApplication.setUsername(username);
+
 									Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 									LoginActivity.this.startActivity(intent);
 									LoginActivity.this.finish();

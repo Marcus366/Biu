@@ -16,7 +16,7 @@ public class MainActivity extends FragmentActivity {
 	private FragmentTabHost mTabHost;
 	private String texts[] = {"ForumFragment", "FriendFragment", "BiuFragment", "SettingFragment"};
 	//private Class fragments[] = {ForumFragment.class, FriendFragment.class, BiuFragment.class, SettingFragment.class};
-	private Class fragments[] = {BiuFragment.class, FriendFragment.class, BiuFragment.class, BiuFragment.class};
+	private Class fragments[] = {ForumFragment.class, FriendFragment.class, BiuFragment.class, SettingFragment.class};
 	private int drawables[] = {R.drawable.tab_forum, R.drawable.tab_fri, R.drawable.tab_biu, R.drawable.tab_set};
 
 	@Override
