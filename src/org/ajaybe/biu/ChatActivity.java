@@ -61,6 +61,7 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 	}
 	
 	public void onReceive(ChatEntity entity) {
+		entity.setName(targetname);
 		mDataArrays.add(entity);
 		mAdapter.notifyDataSetChanged();
 		mListView.setSelection(mListView.getCount() - 1);
@@ -98,10 +99,10 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 			ChatEntity entity = new ChatEntity();
 			entity.setDate(dataArray[i]);
 			if (i % 2 == 0) {
-				entity.setName("肖B");
+				entity.setName(targetname);
 				entity.setMsgType(true);// 收到的消息
 			} else {
-				entity.setName("必败");
+				entity.setName(BiuApplication.getUsername());
 				entity.setMsgType(false);// 自己发送的消息
 			}
 			entity.setMessage(msgArray[i]);
@@ -182,7 +183,7 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 		String contString = mEditTextContent.getText().toString();
 		if (contString.length() > 0) {
 			ChatEntity entity = new ChatEntity();
-			entity.setName("必败");
+			entity.setName(BiuApplication.getUsername());
 			entity.setDate(getDate());
 			entity.setMessage(contString);
 			entity.setMsgType(false);
@@ -196,7 +197,7 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 			
 			RequestParams params = new RequestParams();
 	    	params.put("username", BiuApplication.getUsername());
-	    	params.put("target", "zzq");
+	    	params.put("target", targetname);
 	    	params.put("msg", contString);
 			
 			AsyncHttpClient client = new AsyncHttpClient();
