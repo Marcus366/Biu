@@ -34,7 +34,7 @@ public class ChatReceiver extends BroadcastReceiver {
         	
         	Log.e("ChatReceiver", title + " " + message + " " + extras + " " + type);
         	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        	ChatEntity entity = new ChatEntity("Ê²Ã´¹í", sdf.format(new Date()), message, false);
+        	ChatEntity entity = new ChatEntity("Ê²Ã´¹í", sdf.format(new Date()), message, true);
 			for (IObserver ob : mObservers) {
 				ob.onReceive(entity);
 			}
