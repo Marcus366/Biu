@@ -57,6 +57,7 @@ public class ChatAdapter extends BaseAdapter {
 		return ITEMCOUNT;
 	}
 
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		ChatEntity entity = coll.get(position);
@@ -88,7 +89,11 @@ public class ChatAdapter extends BaseAdapter {
 		}
 		viewHolder.tvSendTime.setText(entity.getDate());
 		viewHolder.tvUserName.setText(entity.getName());
-		viewHolder.tvContent.setText(entity.getMessage());
+		if (entity.getSave()) {
+			viewHolder.tvContent.setText("");
+		} else
+			viewHolder.tvContent.setText(entity.getMessage());
+		
 		return convertView;
 	}
 

@@ -5,6 +5,15 @@ public class ChatEntity {
 	private String date;// 消息日期
 	private String message;// 消息内容
 	private boolean isComMeg = true;// 是否为收到的消息
+	private boolean isSave = false;
+	
+	public boolean getSave() {
+		return isSave;
+	}
+	
+	public void setSave(boolean judge) {
+		isSave = judge;
+	}
 
 	public String getName() {
 		return name;
