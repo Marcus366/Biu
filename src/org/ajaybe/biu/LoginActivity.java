@@ -56,7 +56,9 @@ public class LoginActivity extends Activity {
     	/*
     	Intent intent = new Intent(this, MainActivity.class);
     	this.startActivity(intent);
-		*/
+    	this.finish();
+    	*/
+		
 		
     	EditText edittext_username = (EditText) findViewById(R.id.username);
     	EditText edittext_password = (EditText) findViewById(R.id.password);
