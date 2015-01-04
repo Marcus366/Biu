@@ -36,6 +36,7 @@ public class FriendFragment extends ListFragment {
 	public Map<String, Object> map = new HashMap<String, Object>();
 	private List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
 	private int cnt_fri;
+	//private int[] fri_pt = {R.drawable.pt_girl, R.drawable.pt_boy, R.drawable.pt_0, R.drawable.pt_1, R.drawable.pt_2, R.drawable.pt_3, R.drawable.pt_4};
 	private String[] fri = new String[10];
 	
 	
@@ -57,7 +58,7 @@ public class FriendFragment extends ListFragment {
 	private List<Map<String, Object>> getData() {
 		
     	RequestParams params = new RequestParams();
-    	params.put("username", "zzq");
+    	params.put("username", BiuApplication.getUsername());
     	
     	AsyncHttpClient client = new AsyncHttpClient();
     	client.post("http://106.187.100.252/friends", params, new AsyncHttpResponseHandler() {
@@ -84,14 +85,11 @@ public class FriendFragment extends ListFragment {
 								}
 							}
 						}
-						map.put("portrait", R.drawable.pt_boy);
-						map.put("user_name", "ZengZhanPeng");
-						data.add(map);
 						
-						for (int i = 0; i < 1; ++i) {
+						for (int i = 0; i < cnt_fri; ++i) {
 							
 							map = new HashMap<String, Object>();
-							map.put("portrait", R.drawable.pt_girl);
+							map.put("portrait", R.drawable.pt_boy);
 							map.put("user_name", fri[i]);
 							data.add(map);
 						}

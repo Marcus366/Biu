@@ -29,7 +29,7 @@
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:background="@drawable/pt_girl"
+            android:background="@drawable/pt_boy"
             android:focusable="false" />
 
         <TextView

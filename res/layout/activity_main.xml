@@ -14,7 +14,7 @@
     <android.support.v4.app.FragmentTabHost
         android:id="@android:id/tabhost"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:background="@drawable/bg_tab" >
     </android.support.v4.app.FragmentTabHost>
 
