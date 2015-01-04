@@ -85,7 +85,7 @@ public class LoginActivity extends Activity {
 								if (response == 0) {
 									BiuApplication.setUsername(username);
 
-									Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+									Intent intent = new Intent(LoginActivity.this, BiuedActivity.class);
 									LoginActivity.this.startActivity(intent);
 									LoginActivity.this.finish();
 								} else if (response == 1) {
