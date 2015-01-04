@@ -33,6 +33,27 @@ public class ForumFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        File fileDir = this.getActivity().getFilesDir();
+        File[] listFile = fileDir.listFiles();
+        for (int i = 0; i < listFile.length; ++i) {
+        	if (listFile[i].isFile()) {
+        		String t_filename = listFile[i].getName();
+        		boolean check = true;
+        		for (int j = 0; j < myname.length(); ++j) {
+        			if (!(myname.charAt(j) == t_filename.charAt(j))) {
+        				check = false;
+        				break;
+        			}
+        		}
+        		if (check) {
+        			cvst_list[count] = t_filename;
+        			++count;
+        		}
+        	}
+        	if (count == 10)
+        		break;
+        }
+        
         adapter = new SimpleAdapter(getActivity(), getData(), R.layout.cvst_list, new String[] {"portrait","user_name", "text"}, new int[] {R.id.cvst_portrait, R.id.cvst_name, R.id.cvst_text});
         setListAdapter(adapter);
         /*
