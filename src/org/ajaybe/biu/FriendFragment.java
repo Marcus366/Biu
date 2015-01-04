@@ -128,8 +128,7 @@ public class FriendFragment extends ListFragment {
         Intent intent = new Intent(FriendFragment.this.getActivity(), ChatActivity.class);
         HashMap<String, Object> view= (HashMap<String, Object>) l.getItemAtPosition(position);  
 
-		String str = view.get("user_name").toString();
-		intent.putExtra("name", view.get("user_name").toString());
+		intent.putExtra("title", view.get("user_name").toString());
 		FriendFragment.this.getActivity().startActivity(intent);
           
           

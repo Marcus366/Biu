@@ -83,6 +83,14 @@
             android:name="org.ajaybe.biu.ChatActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name="org.ajaybe.biu.BiuActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="org.ajaybe.biu.BiuedActivity"
+            android:label="@string/app_name" >
+        </activity>
 
         <receiver
             android:name="org.ajaybe.biu.ChatReceiver"
