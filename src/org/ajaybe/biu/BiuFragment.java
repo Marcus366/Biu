@@ -9,7 +9,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -47,10 +51,12 @@ public class BiuFragment extends Fragment implements SensorEventListener, OnClic
 	private Animation mArrowAnimation;
 	private AnimationDrawable mChordAnimation;
 
+	private ProgressDialog mDialog;
+	
+	private static boolean sBiu;
+	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		
 		BiuFragment.this.getActivity().getActionBar().setTitle("BIU!");
-		
 		
 		mSensorManager = (SensorManager)getActivity().getSystemService(Context.SENSOR_SERVICE);	
 		View view = inflater.inflate(R.layout.fragment_biu, null);
@@ -63,9 +69,21 @@ public class BiuFragment extends Fragment implements SensorEventListener, OnClic
 		mArrowView = (ImageView)view.findViewById(R.id.arrow);
 		mArrowAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.animation_arrow);
 		
-		
 		View chord = view.findViewById(R.id.chord);
 		mChordAnimation = (AnimationDrawable)chord.getBackground();
+		
+		mDialog = new ProgressDialog(getActivity());
+		mDialog.setCancelable(true);
+		mDialog.setOnCancelListener(new OnCancelListener() {
+
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				sBiu = false;
+			}
+			
+		});
+		
+		sBiu = false;
 		
 		return view;
 	}
@@ -102,8 +120,11 @@ public class BiuFragment extends Fragment implements SensorEventListener, OnClic
 			@Override
 			public void run() {
 				mArrowView.startAnimation(mArrowAnimation);
+				mDialog.show();
 			}
 		}, 250);
+		
+		sBiu = true;
 		
 		AsyncHttpClient client = new AsyncHttpClient();
 		RequestParams params = new RequestParams();
@@ -115,6 +136,11 @@ public class BiuFragment extends Fragment implements SensorEventListener, OnClic
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					byte[] responseBody) {
+				if (sBiu == false) {
+					return;
+				}
+				
+				mDialog.dismiss();
 				if (statusCode == 200) {
 					Intent intent = new Intent(getActivity(), BiuActivity.class);
 					try {
@@ -164,6 +190,7 @@ public class BiuFragment extends Fragment implements SensorEventListener, OnClic
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 					byte[] responseBody, Throwable error) {
+				mDialog.dismiss();
 				Toast.makeText(BiuFragment.this.getActivity(), "ÁªÍø´íÎó", Toast.LENGTH_LONG).show();
 			}
 			

@@ -142,6 +142,8 @@ public class LoginActivity extends Activity {
 								int response = jsonObject.getInt(key);
 								if (response == 0) {
 									BiuApplication.setUsername(username);
+
+									//Intent intent = new Intent(LoginActivity.this, BiuedActivity.class);
 									
 									File fileDir = LoginActivity.this.getFilesDir();
 									File user_pass = new File(fileDir, "user_pass.txt");

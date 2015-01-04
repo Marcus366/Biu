@@ -31,28 +31,35 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BiuedActivity extends Activity {
+public class BiuedActivity extends Activity implements SensorEventListener {
+	private SensorManager mSensorManager;
+	private Sensor mSensor;
+	private float mDirection = 225;
 
 	private String mUsername;
 	
-	private TextView mTextView;
 	private Button   mConfirmBtn;
+	private ImageView mArrowView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_biued);
 
-		mTextView = (TextView)findViewById(R.id.text);
+		mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);	
+		mSensor = (Sensor)mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+		
+		mArrowView = (ImageView)findViewById(R.id.arrow_incline);
 		mConfirmBtn = (Button)findViewById(R.id.btn_confirm);
 		
 		mUsername = getIntent().getStringExtra("username");
-		mTextView.setText(mUsername + "Biu ÷–¡Àƒ„");
+		getActionBar().setTitle(mUsername);
 		
 		mConfirmBtn.setOnClickListener(new OnClickListener() {
 
@@ -80,6 +87,31 @@ public class BiuedActivity extends Activity {
 			}
 			
 		});
+		
+	}
+
+	@Override
+	public void onResume() {
+		mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+		super.onResume();
+	}
+	
+	@Override
+	public void onPause() {
+		mSensorManager.unregisterListener(this);
+		super.onPause();
+	}
+	
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		float direction = event.values[0];
+		mArrowView.setRotation(((mDirection - direction) + 135) % 360);
+		mArrowView.invalidate();
+	}
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		// TODO Auto-generated method stub
 		
 	}
 
