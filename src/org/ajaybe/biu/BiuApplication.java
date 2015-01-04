@@ -40,16 +40,15 @@ public class BiuApplication extends Application implements BDLocationListener {
 			LocationClientOption option = new LocationClientOption();
 			option.setLocationMode(LocationMode.Hight_Accuracy);	//设置定位模式
 			option.setCoorType("bd09ll");							//返回的定位结果是百度经纬度,默认值gcj02
-			option.setScanSpan(5000);								//设置发起定位请求的间隔时间为5000ms
-			option.setIsNeedAddress(false);							//返回的定位结果不包含地址信息
-			option.setNeedDeviceDirect(true);						//返回的定位结果包含手机机头的方向
+			option.setScanSpan(10000);								//设置发起定位请求的间隔时间为10000ms
+ 			option.setIsNeedAddress(false);							//返回的定位结果不包含地址信息
+			option.setNeedDeviceDirect(false);						//返回的定位结果不包含手机机头的方向
 			
 			/* initialize location client */
 			sLocationClient = new LocationClient(ctx);
 			sLocationClient.setLocOption(option);
 			sLocationClient.registerLocationListener((BiuApplication)ctx.getApplicationContext());
 			sLocationClient.start();
-			
 			
 			/* initialize JPush */
 			JPushInterface.setDebugMode(true);
@@ -82,7 +81,7 @@ public class BiuApplication extends Application implements BDLocationListener {
 							sHandler.post(new HeartBeat());
 						}
 						
-						try { sleep(5000); } catch (InterruptedException e) {}
+						try { sleep(10000); } catch (InterruptedException e) {}
 					}
 				}
 			}.start();
@@ -112,8 +111,9 @@ public class BiuApplication extends Application implements BDLocationListener {
 	@Override
 	public void onReceiveLocation(BDLocation location) {
 		if (location == null) {
-			// repost request
+			// repost request if fail;
 			requestLocation();
+			return;
 		}
 		
 		sLatitude = location.getLatitude();

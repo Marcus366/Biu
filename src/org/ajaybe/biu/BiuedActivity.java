@@ -28,44 +28,61 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BiuActivity extends ListActivity {
+public class BiuedActivity extends Activity {
 
-	private SimpleAdapter mAdapter;
-	private List<Map<String, Object>> mData = new ArrayList<Map<String, Object>>();
+	private String mUsername;
+	
+	private TextView mTextView;
+	private Button   mConfirmBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_biu);
+		setContentView(R.layout.activity_biued);
 
-		mAdapter = new SimpleAdapter(this, getData(), R.layout.friend_list, new String[] {"portrait","user_name"}, new int[] {R.id.portrait, R.id.user_name});
-        setListAdapter(mAdapter);
+		mTextView = (TextView)findViewById(R.id.text);
+		mConfirmBtn = (Button)findViewById(R.id.btn_confirm);
 		
-	}
+		mUsername = getIntent().getStringExtra("username");
+		mTextView.setText(mUsername + "Biu ÷–¡Àƒ„");
+		
+		mConfirmBtn.setOnClickListener(new OnClickListener() {
 
-	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		
-	}
-	
-	private List<Map<String, Object>> getData() {
-    	int count = getIntent().getIntExtra("count", 0);
-    	String[] names = getIntent().getStringArrayExtra("users");
-    	for (int i = 0; i < count; ++i) {
-    		HashMap<String, Object> map = new HashMap<String, Object>();
-    		map.put("portrait", R.drawable.pt_boy);
-			map.put("user_name", names[i]);
+			@Override
+			public void onClick(View v) {
+				RequestParams params = new RequestParams();
+		    	params.put("username", BiuApplication.getUsername());
+		    	params.put("target", mUsername);
+		    	
+		    	AsyncHttpClient client = new AsyncHttpClient();
+		    	client.post("http://106.187.100.252/add", params, new AsyncHttpResponseHandler() {
+
+					@Override
+					public void onSuccess(int statusCode, Header[] headers,
+							byte[] responseBody) {
+
+					}
+
+					@Override
+					public void onFailure(int statusCode, Header[] headers,
+							byte[] responseBody, Throwable error) {
+
+					}
+		    	});
+			}
 			
-			mData.add(map);
-    	}
-    
-		return mData;
-	}	
+		});
+		
+	}
+
+	
 
 }

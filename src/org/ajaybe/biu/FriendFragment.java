@@ -56,7 +56,6 @@ public class FriendFragment extends ListFragment {
     }
     
 	private List<Map<String, Object>> getData() {
-		
     	RequestParams params = new RequestParams();
     	params.put("username", BiuApplication.getUsername());
     	
@@ -126,8 +125,12 @@ public class FriendFragment extends ListFragment {
         super.onListItemClick(l, v, position, id);  
         Intent intent = new Intent(FriendFragment.this.getActivity(), ChatActivity.class);
         HashMap<String, Object> view= (HashMap<String, Object>) l.getItemAtPosition(position);  
-        intent.putExtra("title", view.get("user_name").toString());
-        FriendFragment.this.getActivity().startActivity(intent);
+
+		intent.putExtra("title", view.get("user_name").toString());
+		FriendFragment.this.getActivity().startActivity(intent);
+          
+          
+
     }  
     
 }

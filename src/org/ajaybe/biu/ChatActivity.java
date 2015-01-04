@@ -11,10 +11,13 @@ import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 import org.ajaybe.biu.ChatReceiver.IObserver;
 import org.apache.http.Header;
 import org.apache.http.util.EncodingUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -360,7 +363,19 @@ public class ChatActivity extends Activity implements OnClickListener, IObserver
 						byte[] responseBody) {
 					Log.e("LOG", "onSuccess(int, Header[], JSONObject) callback was received");
 					if (statusCode == 200) {
-						
+						try {
+							Log.e("ChatActivity", new String(responseBody, "gb2312"));
+							JSONObject jsonObject = new JSONObject(new String(responseBody, "gb2312"));
+							Iterator<String> jsonIter = jsonObject.keys();
+							while (jsonIter.hasNext()) {
+								String key = jsonIter.next();
+								
+							}
+						} catch (JSONException e) {
+							
+						} catch (UnsupportedEncodingException e) {
+							
+						}
 					}
 				}
 
