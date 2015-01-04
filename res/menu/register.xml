@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="org.ajaybe.biu.RegisterActivity" >
+
+    <item
+        android:id="@+id/re_confirm"
+        android:showAsAction="always"
+        android:title="确定"/>
+
+</menu>
