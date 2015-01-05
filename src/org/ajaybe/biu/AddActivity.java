@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 public class AddActivity extends Activity {
 
 	@Override

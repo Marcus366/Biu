@@ -52,10 +52,8 @@ public class ChatReceiver extends BroadcastReceiver {
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
             System.out.println("用户点击打开了通知");
             // 在这里可以自己写代码去定义用户点击后的行为
-            String title   = bundle.getString(JPushInterface.EXTRA_TITLE);
-        	String message = bundle.getString(JPushInterface.EXTRA_ALERT);
+            String title   = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
         	String extras  = bundle.getString(JPushInterface.EXTRA_EXTRA);
-        	String type    = bundle.getString(JPushInterface.EXTRA_CONTENT_TYPE);
         	
         	if (title.equals("BiuChat")) {
         		try {
@@ -69,9 +67,16 @@ public class ChatReceiver extends BroadcastReceiver {
 				}
         		
         	} else if (title.equals("Biu")) {
-        		Intent i = new Intent(ctx, MainActivity.class);  //自定义打开的界面
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                ctx.startActivity(i);
+        		try {
+					JSONObject object = new JSONObject(extras);
+					Intent i = new Intent(ctx, BiuedActivity.class);  //自定义打开的界面
+					i.putExtra("username", object.getString("username"));
+	                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	                ctx.startActivity(i);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+        		
         	}
         } else {
             Log.d(TAG, "Unhandled intent - " + intent.getAction());
